@@ -1,7 +1,8 @@
-## Error Mysql: Too many open files
+## Error Mysql Too many open files
 
 Síntomas: Mysql se para. En el log de errores puedes ver el temido Too many open files.
 Dificultad solución: Fácil.
+
 
 #### ¿Qué ha pasado?
 Hay demasiados archivos abiertos a la vez. Vamos, que tu seridor no da de más o lo tienes mál configurado.
@@ -33,6 +34,8 @@ Conozco 3 sitios:
 - Systemd.
 
 En mi caso modifiqué los archivos de configuración de mysql y /etc/security/limits.conf y aun así no cambiaban los límites. Finalmente fue en systemd donde al cambiar los límites me funcionó a la perfección.
+
+---
 
 ### Solución mediante archivos de configuración de mysql
 

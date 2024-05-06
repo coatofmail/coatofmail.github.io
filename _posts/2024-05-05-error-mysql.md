@@ -37,6 +37,7 @@ En mi caso modifiqué los archivos de configuración de mysql y /etc/security/li
 
 ---
 
+
 ### Solución mediante archivos de configuración de mysql
 
 Primero has de saber que archivos está usando mysql para su configuración.
@@ -62,6 +63,7 @@ Por último reinicia mysql
 sudo systemctl restart mysql
 ```
 
+
 ### Solución mediante /etc/security/limits.conf
 
 En /etc/security/limits.conf se configuran los límites de uso de archivos por usuarios del sistema.
@@ -79,6 +81,7 @@ Por último reinicia mysql
 ```console
 sudo systemctl restart mysql
 ```
+
 
 ### Solución mediante systemd
 

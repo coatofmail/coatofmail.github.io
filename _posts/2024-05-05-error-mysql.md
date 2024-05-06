@@ -28,10 +28,10 @@ echo "$num_files"
 ```
 
 #### ¿Donde puedo cambiarlo?
-Conozco 3 sitios:
+Conozco 3 lugares donde puedes tener el error:
 - Archivos de configuración de mysql.
 - /etc/security/limits.conf
-- Systemd.
+- /usr/lib/systemd/system/mysql.service
 
 En mi caso modifiqué los archivos de configuración de mysql y /etc/security/limits.conf y aun así no cambiaban los límites. Finalmente fue en systemd donde al cambiar los límites me funcionó a la perfección.
 

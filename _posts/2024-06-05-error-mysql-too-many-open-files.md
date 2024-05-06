@@ -3,16 +3,16 @@
 Síntomas: Mysql se para. En el log de errores puedes ver el temido Too many open files.
 Dificultad solución: Fácil.
 
-### ¿Qué ha pasado?
+#### ¿Qué ha pasado?
 Hay demasiados archivos abiertos a la vez. Vamos, que tu seridor no da de más o lo tienes mál configurado.
 
-### ¿Cómo se el límite de archivos que hay configurado en mysql?
+#### ¿Cómo se el límite de archivos que hay configurado en mysql?
 Corre esto en mysql:
 ```
 SHOW VARIABLES LIKE 'open_files_limit';
 ```
 
-### ¿Cómo puedo saber el límite que debería haber?
+#### ¿Cómo puedo saber el límite que debería haber?
 Cada tabla se considera un archivo. Cada base de datos suele tener varias tablas.
 
 Para saber cuantas tabla tiene una de las bases de datos haz lo siguiente. En vez de your_database_name pon el nombre de la base de datos que quieres medir.
@@ -26,7 +26,7 @@ num_files=$(echo "151 * 5000 + 1000" | bc)
 echo "$num_files"
 ```
 
-### ¿Donde puedo cambiarlo?
+#### ¿Donde puedo cambiarlo?
 Conozco 3 sitios:
 - Archivos de configuración de mysql.
 - /etc/security/limits.conf
@@ -34,7 +34,7 @@ Conozco 3 sitios:
 
 En mi caso modifiqué los archivos de configuración de mysql y /etc/security/limits.conf y aun así no cambiaban los límites. Finalmente fue en systemd donde al cambiar los límites me funcionó a la perfección.
 
-## Solución mediante archivos de configuración de mysql
+### Solución mediante archivos de configuración de mysql
 
 Primero has de saber que archivos está usando mysql para su configuración.
 ```
@@ -59,7 +59,7 @@ Por último reinicia mysql
 sudo systemctl restart mysql
 ```
 
-## Solución mediante /etc/security/limits.conf
+### Solución mediante /etc/security/limits.conf
 
 En /etc/security/limits.conf se configuran los límites de uso de archivos por usuarios del sistema.
 
@@ -77,7 +77,7 @@ Por último reinicia mysql
 sudo systemctl restart mysql
 ```
 
-#Solución mediante systemd
+### Solución mediante systemd
 
 Edita  /usr/lib/systemd/system/mysql.service
 
